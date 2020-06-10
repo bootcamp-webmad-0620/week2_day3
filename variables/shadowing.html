@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+
+        let b = 2
+
+        function inner() {
+            let b = 3       // redeclared? shadowing! WnW
+            console.log(`La variable en el contexto local tiene el valor ${b}`)
+        }
+
+        inner()
+        console.log(`La variable en el contexto global tiene el valor ${b}`)
+
+    </script>
+</body>
+
+</html>

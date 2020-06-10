@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+
+        // Global context: this === window
+        console.log('Global context:', this)
+        console.log(window === this)
+
+
+        // Function context: this === window
+        function whatever() {
+            console.log('Function context:', this)
+        }
+        whatever()
+
+
+        // Method context: el objeto al que pertenece
+        const person = {
+            weight: 80,
+            walk() {
+                console.log(this)           // object person
+                console.log(this.weight)    // 80
+            }
+        }
+
+        person.walk()
+
+
+
+
+
+
+        // ¿Cómo gestionar las funciones anidadas en métodos?
+        const runner = {
+            weight: 80,
+            walk1() {
+                setInterval(function () {
+                    this.weight -= .01
+                    console.log(`Peso actual: ${this.weight}kg`)
+                }, 1000)
+            },
+            walk2() {
+                const that = this
+                setInterval(function () {
+                    that.weight -= .01
+                    console.log(`Peso actual: ${that.weight}kg`)
+                }, 1000)
+            },
+            walk3() {
+                setInterval(function () {
+                    this.weight -= .01
+                    console.log(`Peso actual: ${this.weight}kg`)
+                }.bind(this), 1000)
+            },
+            walk4() {
+                setInterval(() => {
+                    this.weight -= .01
+                    console.log(`Peso actual: ${this.weight}kg`)
+                }, 1000)
+            }
+        }
+
+        console.log(`La persona, inicialmente, pesa ${runner.weight}kg`)
+        // runner.walk1()   // ERROR: el contexto de la función es window
+        // runner.walk2()   // NOP: guarrada máxima
+        // runner.walk3()   // YEP: .bind() es un método de las funciones que reorienta su contexto
+        runner.walk4()   // WOAH!: las funciones flecha no reorientan el contexto
+
+
+
+    </script>
+</body>
+
+</html>

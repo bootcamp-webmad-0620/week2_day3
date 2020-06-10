@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <button>HAZME CLICK</button>
+
+    <script>
+
+        // Functions as FCO
+
+        // // Example 1
+        // FCO: Functions as variables
+        const applyNormatVat = subtotal => console.log("El subtotal del presupuesto es", subtotal * 1.21)
+        const applyReducedVat = subtotal => console.log("El subtotal del presupuesto es", subtotal * 1.1)
+        const applyExentVat = subtotal => console.log("El subtotal del presupuesto es", subtotal)
+
+
+        // FCO: Functions as values
+        const getTotal = (cost, theFunctionAsValue) => {
+
+            const benefit = cost * .1
+            const subtotal = cost + benefit
+            console.log(typeof theFunctionAsValue)   // ==> Es una función D:
+
+            theFunctionAsValue(subtotal)
+        }
+
+
+        getTotal(100, applyNormatVat)
+        getTotal(100, applyExentVat)
+        getTotal(100, applyReducedVat)
+
+
+
+
+
+
+
+
+        // // Example 2
+        // FCO: Functions as values
+        // document.querySelector('button').onclick = sayHi
+
+        // function sayHi() {
+        //     alert("HI")
+        // }
+
+
+
+
+    </script>
+</body>
+
+</html>
