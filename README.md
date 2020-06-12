@@ -4,6 +4,8 @@
 > 
 > JS | Context & Function invocation
 
+Vídeo de la clase [en este enlace](https://ironhack.zoom.us/rec/share/6fxtELbJqF5OEp3gs0bfd_8FF6T1eaa813JI86VfxRmDS8OPwjlMJzNhaPDZOu8z)
+
 ## Main points: function declarations
 
  - Function statement: 
